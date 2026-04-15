@@ -33,19 +33,18 @@ jobs:
       - name: HTML・PHPスクリプトを生成
         run: python publisher/wp_update.py
 
-      - name: SSH エージェントをセットアップ
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: known_hosts に Xserver を追加
-        run: ssh-keyscan -p 10022 ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
+      - name: SSH 秘密鍵をセットアップ
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" | base64 -d > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -p 10022 ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
 
       - name: HTML・PHPファイルを Xserver に転送
         run: |
-          ssh -p 10022 ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+          ssh -i ~/.ssh/id_ed25519 -p 10022 ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
             "mkdir -p /tmp/kyoto-exam"
-          scp -P 10022 \
+          scp -i ~/.ssh/id_ed25519 -P 10022 \
             data/kyoto-kouritsu-exam.html \
             data/kyoto-shiritsu-exam.html \
             data/wp_update.php \
@@ -53,14 +52,14 @@ jobs:
 
       - name: WP-CLI で WordPress ページを更新
         run: |
-          ssh -p 10022 ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+          ssh -i ~/.ssh/id_ed25519 -p 10022 ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
             "/usr/bin/php8.2 /usr/bin/wp \
               --path=/home/${{ secrets.SSH_USER }}/aioijuku.com/public_html \
               eval-file /tmp/kyoto-exam/wp_update.php"
 
       - name: 一時ファイルを削除
         run: |
-          ssh -p 10022 ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+          ssh -i ~/.ssh/id_ed25519 -p 10022 ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
             "rm -rf /tmp/kyoto-exam"
 
       - name: 収集データをアーティファクトとして保存
