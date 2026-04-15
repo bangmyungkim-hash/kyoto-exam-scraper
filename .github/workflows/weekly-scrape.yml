@@ -4,7 +4,7 @@ on:
   schedule:
     # 毎週月曜 AM 6:00 JST（UTC 21:00 日曜）
     - cron: "0 21 * * 0"
-  workflow_dispatch:  # 手動実行ボタン
+  workflow_dispatch:
 
 jobs:
   scrape-and-publish:
@@ -30,12 +30,37 @@ jobs:
       - name: 私立高校・説明会情報を収集
         run: python scrapers/school_events.py
 
-      - name: WordPress ページを更新
-        env:
-          WP_URL: ${{ secrets.WP_URL }}
-          WP_USER: ${{ secrets.WP_USER }}
-          WP_APP_PASSWORD: ${{ secrets.WP_APP_PASSWORD }}
+      - name: HTML・PHPスクリプトを生成
         run: python publisher/wp_update.py
+
+      - name: SSH 秘密鍵をセットアップ
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -p 10022 ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: HTML・PHPファイルを Xserver に転送
+        run: |
+          ssh -i ~/.ssh/id_ed25519 -p 10022 ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+            "mkdir -p /tmp/kyoto-exam"
+          scp -i ~/.ssh/id_ed25519 -P 10022 \
+            data/kyoto-kouritsu-exam.html \
+            data/kyoto-shiritsu-exam.html \
+            data/wp_update.php \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/tmp/kyoto-exam/
+
+      - name: WP-CLI で WordPress ページを更新
+        run: |
+          ssh -i ~/.ssh/id_ed25519 -p 10022 ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+            "/usr/bin/php8.2 /usr/bin/wp \
+              --path=/home/${{ secrets.SSH_USER }}/aioijuku.com/public_html \
+              eval-file /tmp/kyoto-exam/wp_update.php"
+
+      - name: 一時ファイルを削除
+        run: |
+          ssh -i ~/.ssh/id_ed25519 -p 10022 ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+            "rm -rf /tmp/kyoto-exam"
 
       - name: 収集データをアーティファクトとして保存
         uses: actions/upload-artifact@v4
@@ -44,10 +69,10 @@ jobs:
           path: data/
           retention-days: 30
 
-      - name: 収集データを Git にコミット（差分がある場合のみ）
+      - name: 収集データを Git にコミット
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/
+          git add data/*.json 2>/dev/null || true
           git diff --staged --quiet || git commit -m "data: 受験情報 自動更新 $(date '+%Y-%m-%d')"
           git push
