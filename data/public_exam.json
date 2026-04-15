@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-15T14:03:10.415867",
+  "updated_at": "2026-04-15T14:12:56.616539",
   "schedule": {
     "year": "2027",
     "source": "手動更新（要確認）",
@@ -31,8 +31,269 @@
     ],
     "official_url": "https://www.kyoto-be.ne.jp/ed-top/",
     "note": "正確な日程は京都府教育委員会の公式サイトでご確認ください。",
-    "retrieved_at": "2026-04-15T14:03:08.324127",
+    "retrieved_at": "2026-04-15T14:11:42.904899",
     "fallback": true
   },
-  "schools": []
+  "schools": [
+    {
+      "name": "佐久平総合技術高等学校浅間キャンパス",
+      "hensachi": "39 - 44",
+      "area": "長野県佐久市/岩村田駅(徒歩11分)/公立",
+      "url": "https://www.minkou.jp/hischool/school/3320/",
+      "bairitsu": []
+    },
+    {
+      "name": "佐久平総合技術高等学校臼田キャンパス",
+      "hensachi": "38",
+      "area": "長野県佐久市/龍岡城駅(徒歩24分)/公立",
+      "url": "https://www.minkou.jp/hischool/school/3307/",
+      "bairitsu": []
+    },
+    {
+      "name": "NPC高等学院",
+      "hensachi": "—",
+      "area": "愛知県弥富市/近鉄弥富駅/私立",
+      "url": "https://www.minkou.jp/hischool/school/16789/",
+      "bairitsu": []
+    },
+    {
+      "name": "相生学院高等学校",
+      "hensachi": "—",
+      "area": "兵庫県相生市/相生駅/私立",
+      "url": "https://www.minkou.jp/hischool/school/16761/",
+      "bairitsu": []
+    },
+    {
+      "name": "相生高等学校",
+      "hensachi": "56 - 58",
+      "area": "兵庫県相生市/相生駅(徒歩15分)/公立",
+      "url": "https://www.minkou.jp/hischool/school/3681/",
+      "bairitsu": []
+    },
+    {
+      "name": "相生産業高等学校",
+      "hensachi": "41 - 42",
+      "area": "兵庫県相生市/西相生駅(徒歩5分)/公立",
+      "url": "https://www.minkou.jp/hischool/school/3682/",
+      "bairitsu": []
+    },
+    {
+      "name": "愛川高等学校",
+      "hensachi": "—",
+      "area": "神奈川県愛甲郡愛川町/番田駅/公立",
+      "url": "https://www.minkou.jp/hischool/school/1189/",
+      "bairitsu": []
+    },
+    {
+      "name": "【閉校】相川高等学校",
+      "hensachi": "—",
+      "area": "新潟県佐渡市/弥彦駅/公立",
+      "url": "https://www.minkou.jp/hischool/school/3458/",
+      "bairitsu": []
+    },
+    {
+      "name": "愛光高等学校",
+      "hensachi": "74",
+      "area": "愛媛県松山市/西衣山駅(徒歩7分)/私立/中高一貫校",
+      "url": "https://www.minkou.jp/hischool/school/2/",
+      "bairitsu": []
+    },
+    {
+      "name": "愛国学園大学附属四街道高等学校",
+      "hensachi": "39",
+      "area": "千葉県四街道市/四街道駅(徒歩11分)/私立/女子校",
+      "url": "https://www.minkou.jp/hischool/school/4/",
+      "bairitsu": []
+    },
+    {
+      "name": "愛国学園大学附属龍ヶ崎高等学校",
+      "hensachi": "39",
+      "area": "茨城県龍ケ崎市/入地駅(徒歩21分)/私立/女子校",
+      "url": "https://www.minkou.jp/hischool/school/5/",
+      "bairitsu": []
+    },
+    {
+      "name": "愛国高等学校",
+      "hensachi": "43 - 51",
+      "area": "東京都江戸川区/京成小岩駅(徒歩4分)/私立/女子校/中高一貫校",
+      "url": "https://www.minkou.jp/hischool/school/3/",
+      "bairitsu": []
+    },
+    {
+      "name": "愛西工科高等学校",
+      "hensachi": "41",
+      "area": "愛知県愛西市/渕高駅(徒歩8分)/公立",
+      "url": "https://www.minkou.jp/hischool/school/76/",
+      "bairitsu": []
+    },
+    {
+      "name": "愛知教育大学附属高等学校",
+      "hensachi": "54",
+      "area": "愛知県刈谷市/富士松駅/国立",
+      "url": "https://www.minkou.jp/hischool/school/7/",
+      "bairitsu": []
+    },
+    {
+      "name": "愛知啓成高等学校",
+      "hensachi": "40 - 59",
+      "area": "愛知県稲沢市/国府宮駅(徒歩21分)/私立",
+      "url": "https://www.minkou.jp/hischool/school/8/",
+      "bairitsu": []
+    },
+    {
+      "name": "【閉校】愛知工業高等学校",
+      "hensachi": "—",
+      "area": "愛知県名古屋市北区/庄内通駅(徒歩20分)/公立",
+      "url": "https://www.minkou.jp/hischool/school/9/",
+      "bairitsu": []
+    },
+    {
+      "name": "愛知工業大学名電高等学校",
+      "hensachi": "45 - 65",
+      "area": "愛知県名古屋市千種区/池下駅(徒歩16分)/私立/中高一貫校",
+      "url": "https://www.minkou.jp/hischool/school/158/",
+      "bairitsu": []
+    },
+    {
+      "name": "愛知高等学校",
+      "hensachi": "62 - 65",
+      "area": "愛知県名古屋市千種区/自由ヶ丘駅(徒歩23分)/私立",
+      "url": "https://www.minkou.jp/hischool/school/6/",
+      "bairitsu": []
+    },
+    {
+      "name": "愛知産業大学三河高等学校",
+      "hensachi": "41 - 42",
+      "area": "愛知県岡崎市/藤川駅(徒歩18分)/私立/中高一貫校",
+      "url": "https://www.minkou.jp/hischool/school/160/",
+      "bairitsu": []
+    },
+    {
+      "name": "愛知産業大学三河高等学校（通信制）",
+      "hensachi": "—",
+      "area": "愛知県岡崎市/藤川駅(徒歩19分)/私立",
+      "url": "https://www.minkou.jp/hischool/school/16696/",
+      "bairitsu": []
+    },
+    {
+      "name": "愛知淑徳高等学校",
+      "hensachi": "56",
+      "area": "愛知県名古屋市千種区/星ヶ丘駅(徒歩11分)/私立/女子校/中高一貫校",
+      "url": "https://www.minkou.jp/hischool/school/161/"
+    },
+    {
+      "name": "愛知商業高等学校",
+      "hensachi": "51",
+      "area": "愛知県名古屋市東区/車道駅(徒歩14分)/公立",
+      "url": "https://www.minkou.jp/hischool/school/10/"
+    },
+    {
+      "name": "愛知総合工科高等学校",
+      "hensachi": "48",
+      "area": "愛知県名古屋市千種区/東山公園駅(徒歩12分)/公立",
+      "url": "https://www.minkou.jp/hischool/school/89254/"
+    },
+    {
+      "name": "愛知みずほ大学瑞穂高等学校",
+      "hensachi": "40 - 46",
+      "area": "愛知県名古屋市瑞穂区/堀田駅(徒歩16分)/私立",
+      "url": "https://www.minkou.jp/hischool/school/162/"
+    },
+    {
+      "name": "愛知黎明高等学校",
+      "hensachi": "40 - 48",
+      "area": "愛知県弥富市/佐古木駅/私立",
+      "url": "https://www.minkou.jp/hischool/school/4742/"
+    },
+    {
+      "name": "会津学鳳高等学校",
+      "hensachi": "53",
+      "area": "福島県会津若松市/会津若松駅/公立/中高一貫校",
+      "url": "https://www.minkou.jp/hischool/school/4072/"
+    },
+    {
+      "name": "会津工業高等学校",
+      "hensachi": "45 - 47",
+      "area": "福島県会津若松市/会津若松駅/公立",
+      "url": "https://www.minkou.jp/hischool/school/4073/"
+    },
+    {
+      "name": "会津高等学校",
+      "hensachi": "66",
+      "area": "福島県会津若松市/西若松駅(徒歩23分)/公立",
+      "url": "https://www.minkou.jp/hischool/school/4071/"
+    },
+    {
+      "name": "会津西陵高等学校",
+      "hensachi": "—",
+      "area": "福島県大沼郡会津美里町/会津高田駅/公立",
+      "url": "https://www.minkou.jp/hischool/school/95823/"
+    },
+    {
+      "name": "会津第二高等学校",
+      "hensachi": "—",
+      "area": "福島県会津若松市/会津若松駅/公立",
+      "url": "https://www.minkou.jp/hischool/school/4074/"
+    },
+    {
+      "name": "会津農林高等学校",
+      "hensachi": "36",
+      "area": "福島県河沼郡会津坂下町/会津坂下駅(徒歩2分)/公立",
+      "url": "https://www.minkou.jp/hischool/school/4075/"
+    },
+    {
+      "name": "会津北嶺高等学校",
+      "hensachi": "39 - 41",
+      "area": "福島県会津若松市/会津若松駅(徒歩16分)/私立",
+      "url": "https://www.minkou.jp/hischool/school/4959/"
+    },
+    {
+      "name": "会津若松ザベリオ学園高等学校",
+      "hensachi": "43 - 57",
+      "area": "福島県会津若松市/七日町駅(徒歩19分)/私立",
+      "url": "https://www.minkou.jp/hischool/school/163/"
+    },
+    {
+      "name": "IT未来高等学校",
+      "hensachi": "45",
+      "area": "茨城県笠間市/宍戸駅(徒歩14分)/公立",
+      "url": "https://www.minkou.jp/hischool/school/95960/"
+    },
+    {
+      "name": "ID学園高等学校",
+      "hensachi": "—",
+      "area": "長野県東御市/滋野駅/私立",
+      "url": "https://www.minkou.jp/hischool/school/96057/"
+    },
+    {
+      "name": "愛徳学園高等学校",
+      "hensachi": "55",
+      "area": "兵庫県神戸市垂水区/霞ヶ丘駅(徒歩19分)/私立/女子校/中高一貫校",
+      "url": "https://www.minkou.jp/hischool/school/164/"
+    },
+    {
+      "name": "愛農学園農業高等学校",
+      "hensachi": "37",
+      "area": "三重県伊賀市/青山町駅(徒歩18分)/私立",
+      "url": "https://www.minkou.jp/hischool/school/165/"
+    },
+    {
+      "name": "相原高等学校",
+      "hensachi": "44 - 45",
+      "area": "神奈川県相模原市緑区/橋本駅/公立",
+      "url": "https://www.minkou.jp/hischool/school/1190/"
+    },
+    {
+      "name": "AOIKE高等学校",
+      "hensachi": "—",
+      "area": "福井県小浜市/小浜駅(徒歩11分)/私立",
+      "url": "https://www.minkou.jp/hischool/school/95958/"
+    },
+    {
+      "name": "青井高等学校",
+      "hensachi": "38",
+      "area": "東京都足立区/五反野駅(徒歩13分)/公立",
+      "url": "https://www.minkou.jp/hischool/school/2799/"
+    }
+  ]
 }
