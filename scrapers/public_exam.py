@@ -38,18 +38,18 @@ def scrape_minkou_public():
     page = 1
 
     while True:
-        url = MINKOU_URL if page == 1 else f"{MINKOU_URL}page={page}/"
+        url = MINKOU_URL if page == 1 else f"{MINKOU_URL}page={page}"
         try:
             resp = requests.get(url, headers=HEADERS, timeout=15)
             resp.encoding = "utf-8"
             soup = BeautifulSoup(resp.text, "html.parser")
 
-            items = soup.select("ul.schoolList > li")
+            items = soup.select("li.mod-listSearch-list")
             if not items:
                 break
 
             for item in items:
-                name_tag = item.select_one("h2.schoolName a, .school-name a")
+                name_tag = item.select_one(".mod-listSearch-name > a")
                 if not name_tag:
                     continue
 
@@ -57,11 +57,11 @@ def scrape_minkou_public():
                 detail_url = "https://www.minkou.jp" + name_tag.get("href", "")
 
                 # 偏差値
-                hensachi_tag = item.select_one(".hensachi .num, .deviation-value")
+                hensachi_tag = item.select_one(".mod-listSearch-devi dd a")
                 hensachi = hensachi_tag.get_text(strip=True) if hensachi_tag else "—"
 
                 # 所在地
-                area_tag = item.select_one(".schoolAddress, .school-address")
+                area_tag = item.select_one(".mod-listSearch-name span")
                 area = area_tag.get_text(strip=True) if area_tag else "—"
 
                 schools.append({
@@ -72,8 +72,8 @@ def scrape_minkou_public():
                 })
 
             # 次ページ確認
-            next_btn = soup.select_one("a.next, .pagination .next a")
-            if not next_btn:
+            next_href = f"/hischool/search/pref_id=26/public=1/page={page + 1}"
+            if not soup.find("a", href=next_href):
                 break
 
             page += 1
