@@ -1,0 +1,53 @@
+name: 京都高校受験情報 週次収集・WordPress更新
+
+on:
+  schedule:
+    # 毎週月曜 AM 6:00 JST（UTC 21:00 日曜）
+    - cron: "0 21 * * 0"
+  workflow_dispatch:  # 手動実行ボタン
+
+jobs:
+  scrape-and-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: リポジトリをチェックアウト
+        uses: actions/checkout@v4
+
+      - name: Python 3.11 セットアップ
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: 依存パッケージをインストール
+        run: pip install -r requirements.txt
+
+      - name: 公立高校入試情報を収集
+        run: python scrapers/public_exam.py
+
+      - name: 私立高校・説明会情報を収集
+        run: python scrapers/school_events.py
+
+      - name: WordPress ページを更新
+        env:
+          WP_URL: ${{ secrets.WP_URL }}
+          WP_USER: ${{ secrets.WP_USER }}
+          WP_APP_PASSWORD: ${{ secrets.WP_APP_PASSWORD }}
+        run: python publisher/wp_update.py
+
+      - name: 収集データをアーティファクトとして保存
+        uses: actions/upload-artifact@v4
+        with:
+          name: exam-data-${{ github.run_number }}
+          path: data/
+          retention-days: 30
+
+      - name: 収集データを Git にコミット（差分がある場合のみ）
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git diff --staged --quiet || git commit -m "data: 受験情報 自動更新 $(date '+%Y-%m-%d')"
+          git push
