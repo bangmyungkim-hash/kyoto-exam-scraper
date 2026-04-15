@@ -1,7 +1,8 @@
 __pycache__/
 *.pyc
 .env
-data/*.json
 data/*.html
 data/*.php
-!data/.gitkeep
+__pycache__/
+*.pyc
+.env

@@ -1,4 +1,4 @@
-name: 京都高校受験情報 週次収集・WordPress更新
+name: 京都高校受験情報 週次収集
 
 on:
   schedule:
@@ -7,72 +7,28 @@ on:
   workflow_dispatch:
 
 jobs:
-  scrape-and-publish:
+  scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 20
 
     steps:
-      - name: リポジトリをチェックアウト
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Python 3.11 セットアップ
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           cache: "pip"
 
-      - name: 依存パッケージをインストール
-        run: pip install -r requirements.txt
+      - run: pip install -r requirements.txt
 
-      - name: 公立高校入試情報を収集
-        run: python scrapers/public_exam.py
+      - run: python scrapers/public_exam.py
 
-      - name: 私立高校・説明会情報を収集
-        run: python scrapers/school_events.py
+      - run: python scrapers/school_events.py
 
-      - name: HTML・PHPスクリプトを生成
-        run: python publisher/wp_update.py
-
-      - name: SSH 秘密鍵をセットアップ
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" | base64 -d > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -p 10022 ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
-
-      - name: HTML・PHPファイルを Xserver に転送
-        run: |
-          ssh -i ~/.ssh/id_ed25519 -p 10022 ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
-            "mkdir -p /tmp/kyoto-exam"
-          scp -i ~/.ssh/id_ed25519 -P 10022 \
-            data/kyoto-kouritsu-exam.html \
-            data/kyoto-shiritsu-exam.html \
-            data/wp_update.php \
-            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/tmp/kyoto-exam/
-
-      - name: WP-CLI で WordPress ページを更新
-        run: |
-          ssh -i ~/.ssh/id_ed25519 -p 10022 ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
-            "/usr/bin/php8.2 /usr/bin/wp \
-              --path=/home/${{ secrets.SSH_USER }}/aioijuku.com/public_html \
-              eval-file /tmp/kyoto-exam/wp_update.php"
-
-      - name: 一時ファイルを削除
-        run: |
-          ssh -i ~/.ssh/id_ed25519 -p 10022 ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
-            "rm -rf /tmp/kyoto-exam"
-
-      - name: 収集データをアーティファクトとして保存
-        uses: actions/upload-artifact@v4
-        with:
-          name: exam-data-${{ github.run_number }}
-          path: data/
-          retention-days: 30
-
-      - name: 収集データを Git にコミット
+      - name: データを Git にコミット
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/*.json 2>/dev/null || true
-          git diff --staged --quiet || git commit -m "data: 受験情報 自動更新 $(date '+%Y-%m-%d')"
+          git add data/
+          git diff --staged --quiet || git commit -m "data: 自動更新 $(date '+%Y-%m-%d')"
           git push
