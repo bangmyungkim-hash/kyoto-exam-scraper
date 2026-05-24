@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-17T21:45:55.675914",
+  "updated_at": "2026-05-24T21:46:16.145896",
   "private_schools": [
     {
       "name": "佐久平総合技術高等学校浅間キャンパス",
@@ -284,6 +284,27 @@
   ],
   "events": {
     "calendar": [],
-    "official": []
+    "official": [
+      {
+        "school": "洛南高校",
+        "text": "2026.5.22中学校高校【中・高】6月13日(土)　第１回 中・高 オープンキャンパスのご案内[5月22日(金)更新]",
+        "source": "https://www.rakunan-h.ed.jp/"
+      },
+      {
+        "school": "洛南高校",
+        "text": "【中・高】6月13日(土)　第１回 中・高 オープンキャンパスのご案内[5月22日(金)更新]",
+        "source": "https://www.rakunan-h.ed.jp/"
+      },
+      {
+        "school": "洛南高校",
+        "text": "2026.5.19小学校【小学校】入試説明会・学校見学会（令和8年 6月20日（土））について",
+        "source": "https://www.rakunan-h.ed.jp/"
+      },
+      {
+        "school": "洛南高校",
+        "text": "【小学校】入試説明会・学校見学会（令和8年 6月20日（土））について",
+        "source": "https://www.rakunan-h.ed.jp/"
+      }
+    ]
   }
 }
