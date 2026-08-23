@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-16T21:11:04.422380",
+  "updated_at": "2026-08-23T21:12:01.364691",
   "schedule": {
     "year": "2027",
     "source": "手動更新（要確認）",
@@ -31,7 +31,7 @@
     ],
     "official_url": "https://www.kyoto-be.ne.jp/ed-top/",
     "note": "正確な日程は京都府教育委員会の公式サイトでご確認ください。",
-    "retrieved_at": "2026-08-16T21:09:54.030771",
+    "retrieved_at": "2026-08-23T21:10:54.478638",
     "fallback": true
   },
   "schools": [
