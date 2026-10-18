@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-12T00:06:57.525507",
+  "updated_at": "2026-10-18T22:41:42.703345",
   "private_schools": [
     {
       "name": "佐久平総合技術高等学校浅間キャンパス",
@@ -268,22 +268,33 @@
       "type": "私立"
     },
     {
+      "name": "あおい開惺高等学校",
+      "hensachi": "—",
+      "area": "静岡県静岡市清水区/由比駅/私立",
+      "url": "https://www.minkou.jp/hischool/school/96382/",
+      "type": "私立"
+    },
+    {
       "name": "AOIKE高等学校",
       "hensachi": "—",
       "area": "福井県小浜市/小浜駅(徒歩11分)/私立",
       "url": "https://www.minkou.jp/hischool/school/95958/",
       "type": "私立"
-    },
-    {
-      "name": "青井高等学校",
-      "hensachi": "38",
-      "area": "東京都足立区/五反野駅(徒歩13分)/公立",
-      "url": "https://www.minkou.jp/hischool/school/2799/",
-      "type": "私立"
     }
   ],
   "events": {
     "calendar": [],
-    "official": []
+    "official": [
+      {
+        "school": "洛南高校",
+        "text": "2026.10.14小学校【小学校】学校説明会・体験授業（令和8年10月24日（土））について",
+        "source": "https://www.rakunan-h.ed.jp/"
+      },
+      {
+        "school": "洛南高校",
+        "text": "【小学校】学校説明会・体験授業（令和8年10月24日（土））について",
+        "source": "https://www.rakunan-h.ed.jp/"
+      }
+    ]
   }
 }
